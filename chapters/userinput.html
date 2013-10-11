@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head></head>
+	<body>
+		<article class="first last">
+			<h2>Handling User Input</h2>
+			<p>
+				In this lesson you learn to use text fields and text views to accept input from users. Text fields enable users to type a single line of text and are instances of the UITextField class. Text views, on the other hand, enable users to type in multiple lines of text and are instances of the UITextView class. Both classes are part of the UIKit framework.
+			</p>
+			<h3>Text Fields</h3>
+			<p>
+				To create a text field, simply drag and drop a Text Field object from the Object library onto a view controller
+			</p>
+			<p><img src="images/figure21.gif" alt="" align="middle" />
+			</p>
+			<p>
+				You can use the Attributes inspector to set up several attributes of the text field including the Placeholder, Alignment, Border Style, Text Color, Font Attributes, and the type of keyboard that is displayed when the user taps on the text field
+			</p>
+			<p><img src="images/figure22.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				A placeholder is some text that is displayed in the text field when it is empty, typically prompting the user to enter some information in the field. You can choose from seven different keyboards to associate with a text field; the choice you make will depend on the type of data you expect. These keyboard styles can be selected using the Attributes inspector and are displayed in the below figure. The text displayed in a text field is an instance of an NSString object. The NSString class is defined in the Foundation framework and its instances represent sequences of characters (alphabets, numbers, punctuations) known as strings To be able to access the text displayed in a text field object from code, you first need to create an outlet in the view controller class and then read the value of the text property in your code. For example, if usernameField is an outlet created using the assistant editor, you can use the following code to get the text displayed in the field: NSString* theUsername = usernameField.text;
+			</p>
+			<p><img src="images/figure23.gif" alt="" align="middle" />
+			</p>
+			<p>
+				Tapping on a text field signifies that the user wants to interact with it, and as a result makes it the active user interface element. The active user interface element is formally known as the first responder. When a text field receives first responder status, it automatically displays a keyboard. To dismiss a keyboard when the Done button is pressed on the keypad, you will have to use the assistant editor to create an Action method in the view controller class and connect it to the Did End On Exit event of the text field.
+			</p>
+			<p><img src="images/figure24.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				In this method you need to ask the text field to resign from first responder status. You can do this by sending it the resignFirstResponder message: - (IBAction)onDismissKeyboard:(id)sender { [sender resignFirstResponder]; Note that the sender parameter will contain a reference to the source of the event that triggered this method (which will be the text field).
+			</p>
+			This method of dismissing the keypad works for most keyboard styles, except for the numeric keypads, which don't have a Done button. It is common practice for applications to allow the user to tap the background of the screen (outside the keypad or any other text field) to dismiss the keypad. One way to achieve this is by using a UITapGestureRecognizer object. For the moment, you can add a gesture recognizer to the view controller class by following these simple steps.
+		</article>
+		<ol style="list-style-type: decimal;">
+			<li>
+				Add the following method declaration to the interface of the view controller class: - (void) handleBackgroundTap:(UITapGestureRecognizer*)sender;
+			</li>
+			<li>
+				Add the following code to the viewDidLoad method of the view controller class: UITapGestureRecognizer* tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleBackgroundTap:)]; tapRecognizer.cancelsTouchesInView = NO; [self.view addGestureRecognizer:tapRecognizer];
+			</li>
+			<li>
+				Implement the handleBackgroundTap: method as follows: - (void) handleBackgroundTap:(UITapGestureRecognizer*)sender [userNameField resignFirstResponder];
+			</li>
+		</ol>
+		<article class="first last">
+			<p></p>
+			<h3>Text Views</h3>
+			<p>
+				Text views are similar to text fields in many respects. The key difference, however, is that text views can handle multiple lines of text. Text views handle the scrolling of text automatically, and can also be used as a read-only view, thus providing a convenient way to display scrollable multi-line text. To create a text view, simply drag and drop a Text View element from the Object library onto the view. By default a text view is sized to fit the entire screen, but you can resize/reposition it as needed.
+			</p>
+			<p><img src="images/figure25.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				To create a read-only text view, simply uncheck its Editable property in the Attributes inspector. A read-only text view does not display a keypad when tapped. Editable text views also enable you to select from one of seven different keypad types that will appear when the user taps them. The keypad associated with a text view, however, does not have a Done button; instead it has a Return button that adds a new line to the text. Thus, to dismiss the keypad you will have to use the gesture recognizer technique discussed for text fields.
+			</p>
+		</article>
+	</body>
+</html>

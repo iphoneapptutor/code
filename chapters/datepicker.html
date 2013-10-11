@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<article class="first last">
+			<h2>Date Pickers</h2>
+			<p>
+				In the previous lesson you learned about picker views. Although it is possible to create a picker view with several components to allow your user to enter a date, Apple provides a special user interface component for precisely this purpose. The date picker is a special picker that can be used to select dates and times. You can configure it to display only date, only time, or both date and time as shown in the figure.
+			</p>
+			<p><img src="images/figure37.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				The UIDatePicker class provides the functionality of a date picker, which is part of the UIKit framework. The UIDatePicker class privately uses a UIPickerView instance, but you cannot access this instance directly.
+			</p>
+			<p>
+				A date picker is much simpler to use than a picker view. For starters, it does not require you to provide a delegate or data source object. Creating a date picker is a simple matter of dragging the Date Picker component from the Object library onto a scene in your storyboard and then creating an appropriate outlet in your view controller class using the assistant editor.
+			</p>
+			<p><img src="images/figure38.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				The mode of the date picker refers to whether it displays date, time, or both date and time. You can also specify the range of values that should be displayed by the date picker. Both these tasks can be accomplished by using the assistant editor.
+			</p>
+			<p><img src="images/figure39.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				You can read the date currently selected in the picker by accessing the date picker's date property. The result is returned as an NSDate instance: // get date from date picker NSDate* pickerDate = datePicker.date;
+			</p>
+			<p>
+				The date picker provides a Value Changed event that is fired when the user changes the selection in the picker. You can use the assistant editor to create and associate an action method in your view controller class with this event.
+			</p>
+			<p><img src="images/figure40.jpg" alt="" align="middle" />
+			</p>
+		</article>
+	</body>
+</html>

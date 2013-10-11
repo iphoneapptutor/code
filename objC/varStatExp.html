@@ -1,0 +1,326 @@
+<article class="first last">
+
+	<h2>Variables, Statements, and Expressions</h2>
+
+	<p>
+		The applications that you create will need to work with different types of data. This data could be anything—coordinates of a place on a map, names and addresses of your friends, and so on. In order for your application to do something useful with this data, it first needs to store it somewhere.
+	</p>
+	<p><img src="images/figure51.gif" alt="" align="center"/>
+	</p>
+	<p>
+		Fundamentally two kinds of data exist—numbers (like height, weight, distance traveled) and characters (names of people, places). Your application will need a strategy to deal with either type.
+
+		Your iOS device uses RAM (random access memory) to store things while it is switched on and running. This is different from hard-disk space, which is the number commonly advertised on the back of the iOS device: 16GB, 32GB, and so on.
+
+		RAM is located inside microchips and is erased/replaced with new information frequently. Whenever you power off off your iOS device, the contents of RAM are lost for good. This is not the case with things stored on the hard disk, whose contents are available the next time the device is turned back on. Keep in mind though, that putting your iOS device to sleep is not the same thing as powering it off. When you put the device to sleep, you are essentially turning off the display and saving battery.
+
+		The amount of RAM available on a particular iOS device depends on the model, but is always significantly less than its hard-disk capacity. The amount of memory of either type (RAM or hard disk) is measured in megabytes (MB) and gigabytes (GB).
+
+		A bit stands for binary digit and is a fundamental unit of information storage on iOS devices. A byte is 8 bits, a kilobyte is 1024 bytes, a megabyte is 1024 kilobytes, and a gigabyte is 1024 megabytes.
+
+		RAM is organized sequentially into tiny byte-sized bins, each with a unique number. A good analogy would perhaps be the locker room in your local gym. Each individual locker would represent a byte of RAM memory, and each locker has a number to distinguish it from other lockers.
+	</p>
+	<p><img src="images/figure52.gif" alt="" align="center"/>
+	</p>
+	<p>
+		Depending on the data that your application want to store, the computer will use one or more bytes. The more data to be stored, the more number of bytes of RAM will be required.
+	</p>
+	<h2>Variables</h2>
+	<p>
+		To store data, a computer program uses something called a variable, which is a named location in RAM that has a value. This value can change depending on your program’s requirements.
+
+		In terms of the locker analogy, if you were to pick one of the lockers and label it with a name (perhaps by sticking a card over the locker with some tape), that named locker would now represent a variable.
+
+		When you use a variable’s name in your program, you are essentially referring to the data stored in the associated location in RAM.
+	</p>
+	<h3>Declaration and Assignment</h3>
+	<p>
+		Now that you know a little about how RAM works, and what variables are, how do you go about creating a variable and storing some data in it?
+
+		It turns out this is a two-stage process. First you need to declare a variable (which in terms of the locker analogy is the act of labeling a free locker), and then you can store some data in it.
+
+		To declare a variable, you need to pick a name for the variable (more on this later), and specify the type of data the variable will store.
+
+		Computer data is essentially one of two types: number-based (numeric) or character-based (string). Consequently, variables are one of two types: numeric or string. This appendix focuses on numeric variables. The type of a data stored in a variable is also referred to as the variable’s data type.
+
+		Since Objective-C was built upon the C programming language, you can use the standard C data types in your Objective-C code; however, Objective-C provides new data types in addition to the C data types. Table below describes some of the common numeric variable data types available to Objective-C programmers.
+	</p>
+	<p>
+		<table cellspacing="2" cellpadding="4">
+			<tr>
+				<td> Objective-C Data Type </td>
+				<td> C Data Type </td>
+				<td> Bytes of Storage Required </td>
+				<td> Notes </td>
+			</tr>
+			<tr>
+				<td></td>
+				<td> int </td>
+				<td> 4 </td>
+				<td> Can store integers in the range –2,147,483,648 to 2,147,438,647 </td>
+			</tr>
+			<tr>
+				<td></td>
+				<td> unsigned int </td>
+				<td> 4 </td>
+				<td> Can store integers in the range 0 to 4,294,967,295 </td>
+			</tr>
+			<tr>
+				<td></td>
+				<td> bool </td>
+				<td> 1 </td>
+				<td> Can be either true or false </td>
+			</tr>
+			<tr>
+				<td></td>
+				<td> long </td>
+				<td> 8 </td>
+				<td> Can store a much larger range of values than the int data type </td>
+			</tr>
+			<tr>
+				<td></td>
+				<td> unsigned long </td>
+				<td> 8 </td>
+				<td> Can store a much larger range of values than the unsigned int data type </td>
+			</tr>
+			<tr>
+				<td></td>
+				<td> float </td>
+				<td> 4 </td>
+				<td> Can store decimal numbers </td>
+			</tr>
+			<tr>
+				<td></td>
+				<td> double </td>
+				<td> 8 </td>
+				<td> Can store decimal numbers with much greater precision than float </td>
+			</tr>
+			<tr>
+				<td> NSInteger </td>
+				<td></td>
+				<td> 4 </td>
+				<td> Equivalent to the int data type </td>
+			</tr>
+			<tr>
+				<td> NSUInteger </td>
+				<td></td>
+				<td> 4 </td>
+				<td> Equivalent to the unsigned int data type </td>
+			</tr>
+			<tr>
+				<td> BOOL </td>
+				<td></td>
+				<td> 1 </td>
+				<td> Can be either YES or NO </td>
+			</tr>
+			<tr>
+				<td> id </td>
+				<td></td>
+				<td> 4 </td>
+				<td> Can store a reference to an object </td>
+			</tr>
+			<tr>
+				<td> NSDecimal </td>
+				<td></td>
+				<td> 20 </td>
+				<td> Used to store decimal numbers </td>
+			</tr>
+		</table>
+	</p>
+	<br />
+	<br />
+	<p>
+		For example, to declare a variable height, whose data type is int, you write a line of code like this:
+		<br />
+
+		int height;
+		<br />
+
+		To assign a value to the variable named height after you have declared it, you write a line of code like this:
+		<br />
+
+		height = 10;
+		<br />
+
+		It is worth noting that no units are used while assigning a value to the variable named height. This is because as far as the computer is concerned, the numeric variable height only stores a number. Whether that number represents height measured in feet, inches, or meters depends on the context in which you use the variable.
+		<br />
+
+		You could combine both declaration and assignment into a single line as follows:
+		<br />
+
+		int height = 10;
+		<br />
+
+		You could also declare multiple variables (of the same data type) in a single line as follows:
+		<br />
+
+		int height, weight;
+		<br />
+		height = 10;
+		<br />
+		weight = 20;
+		<br />
+
+		or
+		<br />
+
+		int height = 10, weight = 20;
+		<br />
+	</p>
+	<h2>Statements</h2>
+	<p>
+		An Objective-C program consists of a series of statements; each statement is a directive to the iOS device to carry out a particular task. Most statements are written one per line, although some could span multiple lines. Statements usually end with a semicolon (;) character. You saw a few examples of Objective-C statements in the previous section.
+	</p>
+	<h3>Null Statements</h3>
+	<p>
+		If you type the ; character on its own on an otherwise empty line, you create a null (do-nothing) statement. Although this is perfectly valid Objective-C code, use of null statements is not recommended.
+	</p>
+	<h3>Whitespace</h3>
+	<p>
+		When it comes to typing computer programs, the term <strong>whitespace</strong> refers to empty lines, tabs, or spaces in your code. In general, the Objective-C compiler ignores whitespace. Thus as far as the Objective-C compiler is concerned, the following statements are identical:
+		<br />
+
+		int height = 10;
+		<br />
+
+		and
+		<br />
+
+		int height=10;
+		<br />
+
+		and
+		<br />
+
+		int height=        10;
+		<br />
+
+		However, whitespace is required between the data type identifier (int) and the name of the variable (height). Furthermore, you cannot have whitespace as part of the name of a variable. Thus, the following code cannot be compiled by the Objective-C compiler:
+		<br />
+
+		intheight = 10;
+		<br />
+
+		and
+		<br />
+
+		int h e i ght = 10;
+		<br />
+
+		Whenever the Objective-C compiler is unable to compile one or more statements in your program, it produces a compilation error and aborts the process. Whitespace should be used to make code appear more readable.
+	</p>
+	<h3>Compound Statements</h3>
+	<p>
+		You can group together multiple statements into a compound statement by enclosing them in between { and }. Compound statements are also known as blocks.
+		<br />
+
+		{
+		<br />
+		int iNumber1 = 10;
+		<br />
+		int iNumber2 = 50;
+		<br />
+		}
+		<br />
+
+		It is a good idea to place the enclosing braces on a separate line each, that way it is easier to see the beginning and end of each block. You can use a block anywhere you can use a statement.
+	</p>
+	<h2>Expressions and Operators</h2>
+	<p>
+		In most cases, your Objective-C statements will consist of a combination of expressions and operators. An expression is basically something that evaluates to a number. The simplest expression is a numeric variable (because a numeric variable is guaranteed to evaluate to a number, that number being the value stored in the variable).
+
+		More complex expressions can be formed by connecting simpler expressions with operators, for example:
+		<br />
+
+		10 – 4
+		<br />
+
+		is a complex expression made up of two simple expressions (10) and (4), that are combined with the minus (–) operator. As you can see, the expression 10 – 4 will evaluate to 6, which is a number.
+
+		An operator is basically a special symbol that instructs the compiler to perform some action using one or more operands. Most operators require two operands; however, some require just one, or even three operands.
+
+		Several operators are available to you as an Objective-C programmer; Below table lists some of the common ones.
+	</p>
+
+	<p>
+		<strong>Objective-C Parameters</strong>
+		<br />
+		<table>
+			<tr>
+				<td>Symbol</td>
+				<td>Description</td>
+				<td>Example</td>
+			</tr>
+			<tr>
+				<td>/</td>
+				<td>Divides two operands; second operand must not be zero </td>
+				<td>number1 / number2</td>
+			</tr>
+			<tr>
+				<td>*</td>
+				<td>Multiplies two operands</td>
+				<td>number1 * number2</td>
+			</tr>
+			<tr>
+				<td>+</td>
+				<td>Adds two operands</td>
+				<td>number1 + number2</td>
+			</tr>
+			<tr>
+				<td>-</td>
+				<td>Subtracts two operands</td>
+				<td>number1 – number2</td>
+			</tr>
+			<tr>
+				<td>=</td>
+				<td>Assignment operator</td>
+				<td>number1 = 300</td>
+			</tr>
+		</table>
+	</p>
+	<p>
+		You can also create expressions using numeric variables just as well. Typically, you would assign an expression to a numeric variable, that is, the numeric variable would contain the number obtained by evaluating an expression, as shown here:
+		<br />
+
+		int iFirst = 100;
+		<br />
+		int iSecond = 30;
+		<br />
+		int iResult = iFirst + iSecond;
+		<br />
+
+		When an expression contains multiple operators, Objective-C applies certain rules to decide the order in which operators should be evaluated. To understand why the order is necessary, consider the expression:
+		<br />
+
+		4 – 1 * 5
+		<br />
+
+		If 4 – 1 was evaluated first, and the result multiplied by 5, then this expression would evaluate to 15. However, if 1 * 5 was evaluated first, and the result subtracted from 4, this expression would evaluate to -1. So which is it?
+
+		It turns out that it is the latter, because Objective-C considers * (multiplication) to be a higher priority operator than – (subtraction). Table B-3 lists the priority of operators in increasing order.
+	</p>
+	<p>
+		<strong>Priority of Objective-C Operators</strong>
+		<br />
+		<table>
+			<tr>
+				<td>Operators (inincreasingorderofpriority)</td>
+			</tr>
+			<tr>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td>+</td>
+			</tr>
+			<tr>
+				<td>*</td>
+			</tr>
+			<tr>
+				<td>/</td>
+			</tr>
+			<tr>
+				<td>=</td>
+			</tr>
+		</table>
+	</p>
+</article>

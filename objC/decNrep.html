@@ -1,0 +1,513 @@
+<article class="first last">
+
+	<h2>Making Decisions and Performing Repetitive Tasks</h2>
+
+	<p>
+		Besides simple assignments and arithmetic, statements can also be used to control the flow of your program. It is time to introduce you to a new type of Objective-C operator that helps you compare variables. Collectively, these operators are called the comparison operators. Below table lists the standard Objective-C comparison operators:
+	</p>
+	<p>
+		<strong>Objective-C Parameters</strong>
+		<br />
+		<table>
+			<tr>
+				<td>Symbol</td>
+				<td>Description/ Usage</td>
+				<td>Example</td>
+			</tr>
+			<tr>
+				<td>==</td>
+				<td>Are the two operands equal?</td>
+				<td>a == b</td>
+			</tr>
+			<tr>
+				<td>&gt;</td>
+				<td>Is the first operand greater than the second?</td>
+				<td>a &gt; b</td>
+			</tr>
+			<tr>
+				<td>&lt;</td>
+				<td>Is the first operand less than the second?</td>
+				<td>a &lt; b</td>
+			</tr>
+			<tr>
+				<td>>=</td>
+				<td>Is the first operand greater than or equal to the second?</td>
+				<td>a >= b</td>
+			</tr>
+			<tr>
+				<td>&lt;=</td>
+				<td>Is the first operand less than or equal to the second?</td>
+				<td>a &lt;= b</td>
+			</tr>
+			<tr>
+				<td>!=</td>
+				<td>Are the two operands not-equal?</td>
+				<td>a != b</td>
+			</tr>
+		</table>
+	</p>
+	<br />
+	<p>
+		You can think of comparison operators as ones that always pose a question, and the answer to the question is YES or NO. Thus, an expression that contains a comparison operator will always evaluate to YES or NO.
+
+		The result of a comparison is always assigned to a variable of type BOOL. This is the Objective-C data type for Boolean variables. A Boolean data type is one that can take only one of two values (YES or NO) and requires exactly 1 byte of storage space in RAM. You would use a BOOL data type as follows:
+		<br />
+
+		BOOL result = YES;
+		<br />
+
+		It is important to note that the value assigned to a Boolean variable must be uppercase YES or uppercase NO. The result of evaluating an expression that involves comparison operators is always a Boolean variable, for example the expression:
+		<br />
+
+		BOOL comparisonTest = 10 > 4;
+		<br />
+
+		evaluates to YES if operand 1 (which is 10 in this case) is greater than (but not equal to) operand 2 (which is 4 in this case).
+	</p>
+	<h2> The if and if ... else statements </h2>
+	<p>
+		Comparison operators are used to create control statements. Normally statements are written in a serial top-bottom order and execute one by one in the order in which they were written. A control statement allows you to modify the order of statements executed, execute certain statements multiple times, or execute certain statements conditionally.
+
+		The if statement is one such control statement. In its basic form an if statement executes a statement only if a specific condition is met.
+		<br />
+		<br />
+
+		if (condition evaluates to YES)
+		<br />
+		statement to execute;
+		<br />
+		<br />
+
+		The test condition is usually a Boolean variable, or an expression that evaluates to a Boolean variable. If the test condition evaluates to YES, the following statement is executed. If the test condition evaluates to NO, the following statement is not executed. A simple example would be:
+		<br />
+		<br />
+
+		int numberOfRedMarbles = 20;
+		<br />
+		int numberOfBlueMarbles = 5;
+		<br />
+		if (numberOfRedMarbles > numberOfBlueMarbles)
+		<br />
+		NSLog(@"%@", @"Game over, you won!");
+		<br />
+		<br />
+
+		In this hypothetical game example, a player is required to collect a certain number of red and blue marbles. A player wins the game if he collects more red marbles than blue ones. The test condition in this case is the expression:
+		<br />
+
+		numberOfRedMarbles > numberOfBlueMarbles
+		<br />
+
+		which evaluates to YES in this particular case. Note the complete if statement contains two lines. The first line contains the condition, and the second contains the statement to execute if the condition evaluates to YES. If you were to write only the first line without the second, the Objective-C compiler would consider it a syntax error.
+		<br />
+
+		As you learned in this appendix, a single Objective-C statement (that is, one written on a single line), can be replaced by a compound statement (a block of statements contained between { and } ).
+		<br />
+
+		An example of an if statement that executes a compound statement would be:
+		<br />
+		<br />
+
+		int numberOfRedMarbles = 20;
+		<br />
+		int numberOfBlueMarbles = 5;
+		<br />
+		int score = 0;
+		<br />
+		if (numberOfRedMarbles > numberOfBlueMarbles)
+		<br />
+		{
+		<br />
+		score = 10;
+		<br />
+		NSLog(@"%@", @"Game over, you won!");
+		<br />
+		}
+		<br />
+		<br />
+
+		In this example, if the number of red marbles is more than the number of blue marbles, a block of statements is conditionally executed. This particular block consists of only two statements:
+		<br />
+
+		Statement 1 gives the player 10 score points.
+		<br />
+		Statement 2 writes a message to the Debug console.
+		<br />
+		<br />
+
+		However, the block could just as well have contained a few dozen statements. The key point to note is that the complete if statement consists of two parts: the first part is where the condition is being tested and the second is a single (or a block) statement that is to be executed when the condition evaluates to YES.
+		<br />
+
+		Any statements that follow a two-part if statement will execute as normal after the if statement has finished executing.
+
+		Thus, in this example:
+		<br />
+		<br />
+
+		int numberOfRedMarbles = 20;
+		<br />
+		int numberOfBlueMarbles = 5;
+		<br />
+		int score = 0;
+		<br />
+		if (numberOfRedMarbles > numberOfBlueMarbles)
+		<br />
+		{
+		<br />
+		score = 10;
+		<br />
+		NSLog(@"%@", @"Game over, you won!");
+		<br />
+		}
+		<br />
+		<br />
+
+		int totalMarbles = numberOfRedMarbles + numberOfBlueMarbles;
+		<br />
+		NSLog(@"%d", totalMarbles);
+		<br />
+		<br />
+
+		the last two statements would execute regardless of the outcome of the if statement, because they are separate statements in their own right. The only statements that may or may not execute are part of the if statement, and the precise condition that is being tested for will determine whether or not they execute.
+	</p>
+	<h3> The else Clause </h3>
+	<p>
+		A modified version of the if statement allows you to specify an additional statement (or a block) that is executed should the test condition fail. This additional alternate-scenario statement is completely optional and should you need to specify it, you can use the modified form of the if statement:
+		<br />
+		<br />
+
+		if (condition evaluates to YES)
+		<br />
+		statement to execute;
+		<br />
+		else
+		<br />
+		some other statement to execute;
+		<br />
+		<br />
+
+		This modified form of the if statement is known as the if…else statement. The else portion is optional. The statement (or block) following the else clause is executed only if the test condition evaluates to NO. A simple example follows:
+		<br />
+		<br />
+
+		int numberOfRedMarbles = 20;
+		<br />
+		int numberOfBlueMarbles = 5;
+		<br />
+		if (numberOfRedMarbles > numberOfBlueMarbles)
+		<br />
+		{
+		<br />
+		NSLog(@"%@", @"Game over, you won!");
+		<br />
+		}
+		<br />
+		else
+		<br />
+		{
+		<br />
+		NSLog(@"%@", @"You lost. Better luck next time!");
+		<br />
+		}
+		<br />
+		<br />
+
+		int totalMarbles = numberOfRedMarbles + numberOfBlueMarbles;
+		<br />
+		NSLog(@"%d", totalMarbles);
+		<br />
+		<br />
+
+		In this example, if numberofRedMarbles is greater than numberofBlueMarbles then
+		<br />
+
+		{
+		<br />
+		NSLog(@"%@", @"Game over, you won!");
+		<br />
+		}
+		<br />
+		<br />
+
+		will be executed, otherwise
+		<br />
+		<br />
+		{
+		<br />
+		NSLog(@"%@", @"You lost. Better luck next time!");
+		<br />
+		}
+		<br />
+		<br />
+
+		will be executed. Now it just so happens to be the case that 20 is greater than 5 and hence the block associated with the else clause will not execute in this example.
+
+		In the examples so far, the conditional expressions are trivial (such as is 20 greater than 5) and strictly speaking, the if statement is not being used to its true potential. In a real-world application the values of the operands in the conditional expression would be dynamic, for instance the number of times a tap is detected, or the number of alien spaceships destroyed by the player as a game proceeds. In these cases the if and if...else statements are extremely useful.
+
+		Just as with an if statement, statements that appear after the if…else statements would continue to execute regardless of what happened in the if...else statement.
+	</p>
+	<h2>The for Statement</h2>
+	<p>
+		The for statement (also known as the for loop), on the other hand, allows you to execute a statement (or a block) multiple times consecutively. The precise number of repetitions will depend on an integer counter variable that you control.
+
+		The for statement allows you to create loops in your code (a loop is a term used to describe a situation in computer programming when a statement or a block is executed multiple times in succession. The general form of the for statement is:
+		<br />
+		<br />
+
+		for (initial expression; termination expression; increment expression)
+		<br />
+		loop statement;
+		<br />
+		<br />
+		Unlike the if and if...else statements, a for statement requires three expressions:
+		<br />
+		<br />
+
+		Initial expression: This expression usually involves an assignment (where a value is assigned to a variable).
+		<br />
+		Termination expression: This expression usually involves a comparison operator and evaluates to either YES or NO. If this expression evaluates to NO the body of the loop will not be executed.
+		<br />
+		Increment expression: This expression usually adds an integer to the variable used in the initial expression.
+		<br />
+		<br />
+
+		The loop statement is any Objective-C statement (or a block of statements) and is also known as the body of the loop.
+		<br />
+
+		When a for loop is encountered, the following happens:
+		<br />
+		1. The initial expression is evaluated.
+		<br />
+		2. The termination expression is evaluated.
+		<br />
+		3. If the termination expression evaluates to NO the for statement terminates, and execution continues at the first statement after the loop block.
+		<br />
+		4. If the termination expression evaluates to YES the loop statement/block is executed once.
+		<br />
+		5. The increment expression is evaluated, and execution continues from step 2.
+		<br />
+		<br />
+		These steps are depicted in Figure.
+	</p>
+	<p><img src="images/figure53.gif" alt="" align="center"/>
+	</p>
+	<p>
+		As an example of a for statement in action, consider the following snippet:
+		<br />
+		<br />
+
+		int number;
+		<br />
+		for (number = 1; number &lt;= 5; number = number + 1)
+		<br />
+		{
+		<br />
+		NSLog(@"%@", @"This message is displayed by a loop block!");
+		<br />
+		}
+		<br />
+		<br />
+
+		This snippet would result in the following output:
+		<br />
+
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+
+		In this example, the initial expression sets the value of the variable number to 1:
+		<br />
+		<br />
+
+		number = 1
+		<br />
+		<br />
+
+		The termination expression is a conditional expression that evaluates to YES or NO. In this case the expression tests if the value of iNumber is less-than-or-equal-to 5:
+		<br />
+		<br />
+
+		number &lt;= 5
+		<br />
+		<br />
+
+		The increment expression adds 1 to the value of the variable number:
+		<br />
+		<br />
+
+		number = number + 1
+		<br />
+		<br />
+
+		Without this expression, the value of number would never change, and termination expression would never evaluate to NO. Consequently the loop would go on indefinitely.
+	</p>
+	<h2>The while Statement</h2>
+	<p>
+		The while statement (also known as the while loop), is another statement that allows you to create loops. It executes a statement (or a block of statements) as long as a specified condition holds true. The general form of the while statement is:
+		<br />
+		<br />
+		while (loop condition)
+		<br />
+		loop statement;
+		<br />
+		<br />
+
+		The loop condition is typically an Objective-C expression that involves a conditional operator, and evaluates to YES or NO. The loop statement is any Objective-C statement (or a block of statements) and is also known as the body of the loop.
+		<br />
+		When a while loop is encountered, the following happens:
+		<br />
+		1. The loop condition is evaluated.
+		2. If the loop condition evaluates to NO the while statement terminates, and execution continues at the first statement after the loop block.
+		<br />
+		3. If the loop condition evaluates to YES the loop statement/block is executed once, after which execution continues from step 1.
+		<br />
+
+		These steps are depicted in the below figure.
+		<br />
+	</p>
+	<p><img src="images/figure54.gif" alt="" align="center"/>
+	</p>
+	<p>
+		As an example of a while statement in action, consider the following code snippet:
+		<br />
+		<br />
+
+		int number = 1;
+		<br />
+		while (number &lt;= 5)
+		<br />
+		{
+		<br />
+		NSLog(@"%@", @"This message is displayed by a loop block!");
+		<br />
+		number = number + 1;
+		<br />
+		}
+		<br />
+		<br />
+
+		This snippet would result in the following output:
+		<br />
+		<br />
+
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+		<br />
+
+		In this example, the loop condition is a conditional expression that evaluates to YES or NO. In this case the expression tests if the value of number is less-than-or-equal-to 5:
+		<br />
+		<br />
+
+		number &lt;= 5
+		<br />
+		<br />
+
+		It is worth noting that the value of number is incremented by 1 in the body of the while loop. If this was not done, then number would always equal 1 and this loop would never terminate.
+	</p>
+	<h2>The do…while Statement</h2>
+	<p>
+		The do...while statement (also known as the do...while loop), is another statement that allows you to create loops. It first executes a statement (or a block of statements) and then checks a specified condition to determine if the preceding statement/block should be executed again. The general form of the do while statement is:
+		<br />
+		<br />
+
+		do
+		<br />
+		loop statement;
+		<br />
+		while (loop condition)
+		<br />
+		<br />
+
+		Once again, the loop condition is typically an Objective-C expression that involves a conditional operator, and evaluates to YES or NO. The loop statement is any Objective-C statement (or a block of statements) and is also known as the body of the loop.
+		<br />
+
+		When a do…while loop is encountered, the following happens:
+		<br />
+		1. The loop body is executed.
+		<br />
+		2. The loop condition is evaluated.
+		<br />
+		3. If the loop condition evaluates to NO the do...while statement terminates, and execution continues at the first statement after the loop block.
+		<br />
+		4. If the loop condition evaluates to YES execution continues from step 1.
+		<br />
+		<br />
+
+		As an example of a do...while statement in action, consider the following code snippet:
+		<br />
+		<br />
+
+		int number = 1;
+		<br />
+		do {
+		<br />
+		NSLog(@"%@", @"This message is displayed by a loop block!");
+		<br />
+		number = number + 1;
+		<br />
+		} while (number &lt;= 5);
+		<br />
+		<br />
+
+		This snippet would result in the following output:
+		<br />
+		<br />
+
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+		This message is displayed by a loop block!
+		<br />
+		<br />
+
+		A key point about the do...while loop is the fact that the body of the loop is guaranteed to execute at least once because the loop condition is evaluated after the loop body is executed.
+
+		Don’t forget to include the semicolon (;) at the end of the do...while loop:
+		<br />
+		<br />
+
+		while (number &lt;= 5);
+	</p>
+	<h2>The break and continue Statements</h2>
+	<p>
+		You can use the break statement as part of the statements that form the body of a for, while, or do...while loop, to end the loop prematurely. Programs that use loops generally rely on the loop to come to a natural end at some point based on some test criteria.
+		<br />
+
+		However, sometimes you need to break out of a loop prematurely (perhaps in response to some external factor) and in such cases you can use the break statement. The break statement is written on its own, on a single line:
+		<br />
+		<br />
+
+		break;
+		<br />
+		<br />
+
+		Any other statements in the block after the break statement will not be executed.
+		<br />
+
+		The continue statement, when used in the body of a loop, causes execution to skip one iteration of the loop. Any statements after a continue statement will be skipped for that iteration. The continue statement is also written on its own, on a single line:
+		<br />
+		<br />
+
+		continue;
+	</p>
+</article>

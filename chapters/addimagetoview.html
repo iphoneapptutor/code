@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<body>
+		<article class="first last">
+			<h2>Adding Images to Your View</h2>
+			<p>
+				The UIKit framework provides classes that enable you to represent and display images. In this lesson, you learn how to use the UIImage and UIImageView classes.
+			</p>
+			<h3>The UIImage Class</h3>
+			<p>
+				A UIImage object represents image data that has either been read from a file or created using Quartz primitives. Instances are immutable, thus their properties can't be changed once they have been created. UIImage instances do not provide access to the underlying image data, but do enable you to retrieve a PNG or JPEG image representation in an NSData object.
+			</p>
+			<p>
+				Images generally require large amounts of memory to store, and you should avoid creating image objects larger than 1024 &times; 1024 pixels. To load an image from a file into a UIImage object, you first need to ensure the file is in one of the formats listed in table.
+			</p>
+		</article>
+		<table>
+			<tbody>
+				<tr>
+					<td>Description</td>
+					<td>File Extensions</td>
+				</tr>
+				<tr>
+					<td>Portable Network Graphics</td>
+					<td>.png</td>
+				</tr>
+				<tr>
+					<td>Joint Photographic Experts Group</td>
+					<td>.jpeg, .jpg</td>
+				</tr>
+				<tr>
+					<td>Graphics Interchange Format</td>
+					<td>.gif</td>
+				</tr>
+				<tr>
+					<td>Windows Device Independent Bitmap</td>
+					<td>.bmp</td>
+				</tr>
+				<tr>
+					<td>Tagged Image File Format</td>
+					<td>.tif, .tiff</td>
+				</tr>
+			</tbody>
+		</table>
+		<article class="first last">
+			<p> </p>
+			<p>
+				You also need to ensure that the file is part of the project. If the file is not visible in the Project Explorer, you need to add it by right-clicking an existing group and selecting the Add Files to Project option in the context menu.
+			</p>
+			<p><img src="images/figure30.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				Assuming you have an image file called cat.png, and want to load it into a UIImage object, use the following code: UIImage* catImage = [UIImage imageNamed:@"cat.png"];
+			</p>
+			<p>
+				The imageNamed method is a class method of the UIImage class, and implements an internal system cache. Thus if you were to use this method to repeatedly load the same image file, the image data would be loaded only once and shared between the UIImage instances. If this code is executed on a device that has a retina display, the imageNamed: method first searches for a file with an @2x suffix appended to it. Thus, on an iPhone 4, this code would first look for a file named cat@2x.png. If it could not find that, it would look for the file cat.png.
+			</p>
+			<p>
+				Loading images from your application bundle is not the only way to use UIImage objects. You can also create one from an online data source by downloading the data available at the URL into an NSData object and then instantiating a UIImage using the imageWithData: class method.
+			</p>
+			<p>
+				The following code snippet shows how to do this synchronously; however in production code you should try and download any data from the web, including images, asynchronously. Downloading images asynchronously is an advanced topic and is not covered in this book.
+			</p>
+			<p>
+				NSURL * imageURL = [ NSURL URLWithString : @"http://......" ]; NSData * imageData = [ NSData dataWithContentsOfURL :imageURL]; UIImage * image = [[ UIImage alloc ] initWithData :imageData];
+			</p>
+			<h3>The UIImageView Class</h3>
+			<p>
+				A UIImageView object provides a container for displaying either a single UIImage object, or an animated series of UIImage objects. To add a UIImageView object to a view controller or storyboard scene, simply drag an Image View object from the Object library.
+			</p>
+			<p><img src="images/figure31.gif" alt="" align="middle" />
+			</p>
+			<p>
+				To set up the default image displayed in the image view, simply select an image from the project's resources for the Image property in the Attributes inspector.
+			</p>
+			<p><img src="images/figure32.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				To display a UIImage object in an image view, you need to create an outlet for the image view in the view controller class and set up its image property as follows: imageView.image = [UIImage imageNamed:@"cat.png"];
+			</p>
+			<p>
+				To use a UIImageView object to perform simple frame animation, simply provide an array of UIImage objects in its animationImages property as follows:
+			</p>
+			<p>
+				NSArray* frameArray = [[NSArray alloc] initWithObjects: [UIImage imageNamed:@&rdquo;frame1.png&rdquo;], [UIImage imageNamed:@&rdquo;frame2.png&rdquo;], [UIImage imageNamed:@&rdquo;frame3.png&rdquo;], nil]; imageView.animationImages=frameArray;
+			</p>
+			<p>
+				and send the startAnimating message to the image view: [imageView startAnimating];
+			</p>
+			<p>
+				Specify the duration of the animation in seconds, using the animationDuration property: imageView.animationDuration = 2;
+			</p>
+		</article>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head></head>
+	<body>
+		<article class="first last">
+			<h2>Pickers</h2>
+			<p>
+				A picker view is a user interface component that enables a user to pick a value from a set of related values using a slot machine-style interface.
+			</p>
+			<p><img src="images/figure33.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				Each wheel of the picker view is called a component, and it is fairly common to have picker view with multiple components. Each component can have a different number of items in it
+			</p>
+			<p><img src="images/figure34.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				A picker view is encapsulated by the UIPickerView class, which is part of the UIKit framework. Apple provides a special picker for allowing the user to select date and time. This component is called the date picker and is covered in the next lesson. A picker requires a data source object and a delegate object. The data source object is one that implements the UIPickerViewDataSource protocol and provides information on the number of components, and rows-per-component of the picker. The delegate object implements the UIPickerViewDelegate protocol and has methods that are called when the current selection in a component has changed. The delegate and data source objects could both be the same object, and in many cases the duties of these objects are performed by the view controller. However, it is very possible for them to be independent objects. Creating a picker view is a simple matter of dragging the Picker View component from the Object library onto your storyboard or XIB file and then creating an appropriate outlet in your view controller class using the assistant editor.
+			</p>
+			<p><img src="images/figure35.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				The delegate and data source objects can be set up using Interface Builder or by setting up the delegate and dataSource properties in code.
+			</p>
+			<p><img src="images/figure36.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				The following code snippet assumes pickerView is an outlet that is connected to a UIPickerView instance and sets up the view controller to be the delegate and the data source object: - (void)viewDidLoad{ [super viewDidLoad]; pickerView.delegate = self; pickerView.dataSource = self; } The UIPickerViewDataSource protocol defines two methods: - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView; - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
+			</p>
+			<p>
+				You must return the number of components in the picker view from the numberOfComponentsInPickerView: method. The number of rows in each component should be returned by the pickerView:numberOfRowsInComponent: method. For example, a two-component picker can be set up as follows:
+			</p>
+			<p>
+				- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{ return 2; } - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component { if (component == 0) return [cities count]; return [placesOfInterest count]; } The most commonly used UIPickerViewDelegate methods are: - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component; - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component;
+			</p>
+			<p>
+				The text to be displayed in each row of each component is to be returned by the pickerView:titleForRow:forComponent: delegate method. When the user selects a row in any component of the picker, your delegate object's pickerView:didSelectRow:inComponent: method will be called. Typically, the data for each component of a picker view is stored in an array. Assuming that cities and placesOfInterest are arrays of NSString objects that contain the data for the two components of a picker view, the pickerView:titleForRow:forComponent: delegate method can be implemented as follows:
+			</p>
+			<p>
+				- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component { if (component == 0) return [cities objectAtIndex:row]; return [placesOfInterest objectAtIndex:row]; }
+			</p>
+		</article>
+	</body>
+</html>

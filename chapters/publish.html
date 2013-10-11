@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head></head>
+	<body>
+		<article class="first last">
+			<h2>App Store Distribution</h2>
+			<p>
+				In most cases, after your app is ready and tested, you will want to list it on the App Store. Regardless of your pricing strategy (free or paid), every application that is submitted to Apple for distribution via the App Store is subject to an approval process. The approval process takes about a week. Updated versions of an existing application also need to go through an approval process.
+			</p>
+			<p>
+				To distribute your application via the App Store, you will need a standard, paid, iOS developer account. If you have an enterprise iOS developer account, you cannot distribute your applications through the App Store. Submitting an application to Apple for inclusion in the App Store is a two-stage process. First, you need to create an Application Profile on the iTunes Connect portal, and then you need to submit your application binary with the Xcode Organizer.
+			</p>
+			<p>
+				Most of the steps involved in the second stage of creating and submitting the application binary are similar to the Ad Hoc distribution process.
+			</p>
+			<h3>Creating an Application Profile</h3>
+			<p>
+				To start the App Store submission process, log in to the iTunes Connect portal at https://itunesconnect.apple.com/ with your iOS developer account credentials. Once you have logged in to the portal, click the Manage Your Applications link.
+			</p>
+			<p><img src="images/figure41.gif" alt="" align="middle" />
+			</p>
+			<p>
+				On this screen you will see all your iOS and MacOS applications. You can either add a new application, or manage one of the existing ones. To create a new Application Profile, click the Add New App button on the top-left corner of the window.
+			</p>
+			<p><img src="images/figure42.gif" alt="" align="middle" />
+			</p>
+			<p>
+				You will be asked to select the type of application you want to submit (iOS or MacOS). Selecting the iOS App option will take you to the Application Information screen.
+			</p>
+			<p><img src="images/figure43.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				On this screen you need to specify basic information on the app. including an application name, a SKU code, and an application Bundle Identifier.
+			</p>
+			<p>
+				ou will also need to enter a Bundle ID Suffix and verify that the bundle identifier specified in your Xcode project's info.plist file matches what is specified on this screen. The Bundle ID Suffix is typically the name you used while creating the Xcode project. The SKU code is not used by Apple, but is used to identify the application on the monthly financial report provided by Apple. Click Continue when you have finished entering this information.
+			</p>
+			<p>
+				The next part of the process requires you to specify availability date and pricing information. The pricing category you select will affect the price your end users pay for your application. If you do not want your application to be available across all App Stores worldwide, you can select specific countries on this screen by clicking the Specific Stores link and then selecting individual stores.
+			</p>
+			<p><img src="images/figure44.jpg" alt="" align="middle" />
+			</p>
+			Click Continue to go to the next screen, where you will provide detailed information on the application. This is a large screen and consists of the following sections:
+		</article>
+		<ul>
+			<li>
+				Metadata
+			</li>
+			<li>
+				Rating
+			</li>
+			<li>
+				EULA
+			</li>
+			<li>
+				Uploads
+			</li>
+		</ul>
+		<article class="first last">
+			<p></p>
+			<p>
+				The Metadata section resembles the below figure. Here you need to specify the following information:
+			</p>
+			<p><img src="images/figure45.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				<b>Version Number:</b> This must match the value set in the Xcode project.
+				<br />
+				<b>Description:</b> This is the description as you want it to appear on the App Store. It can be no more than 4000 characters.
+				<br />
+				<b>Primary Category:</b> Select a category that best describes the app you are adding from a list of available categories.
+				<br />
+				<b>Subcategory:</b> Some categories (like Games) allow you to specify up to two subcategories.
+				<br />
+				<b>Secondary Category:</b> An additional category that further describes the app you are adding.
+				<br />
+				<b>Keywords:</b> One or more keywords that describe the app you are adding. When users search the App Store, the terms they enter are matched with these keywords.
+				<br />
+				<b>Copyright:</b> The name of the person or entity that owns the copyright to the app.
+				<br />
+				<b>Contact Email Address:</b> An email address where Apple engineers can contact you if there are problems with your app.
+				<br />
+				<b>Support URL:</b> A URL that links to the application's support site.
+				<br />
+				<b>App URL:</b> An optional URL that links to the application's website.
+				<br />
+				<b>Privacy Policy URL:</b> An optional URL that links to the application's privacy policy page.
+				<br />
+				<b>Reviewer Notes:</b> Optional notes intended for the person reviewing the application at Apple. If your application uses any online services and requires its users to provide credentials to access these services, you can provide a set of test credentials here for the reviewer to use.
+			</p>
+			<p>
+				The Rating section consists of a series of questions, the answers to which determine a rating category for your application. The rating determines the parental controls that will apply to your application. As you change the answers to these questions, the age limit will change.
+			</p>
+			<p><img src="images/figure46.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				The EULA section allows you to provide a specific end-user license agreement for specific countries. If you do not provide one, the standard license agreement will apply. The Uploads section allows you to upload a few images for your application. These images are:
+			</p>
+			<p>
+				<b>Large 512 &times; 512 Icon:</b> A 512 &times; 512 pixel image that is similar to the application icon and will be used while listing your application on the App Store.
+				<br />
+				<b>iPhone and iPod Touch Screenshots:</b> You can upload up to five images. These must be 320 &times; 480 pixels for portrait applications and 480 &times; 320 pixels for landscape applications.
+				<br />
+				<b>iPad Screenshots:</b> You can upload up to five images. These must be 768 &times; 1024 pixels for portrait applications and 1024 &times; 768 pixels for landscape applications.
+			</p>
+			<p><img src="images/figure47.jpg" alt="" align="middle" />
+			</p>
+			<p>
+				If you are submitting a universal application, you will need to provide both iPhone and iPad screenshots. Click the Next button at the bottom of the screen to finish creating the Application Profile. You are then taken to the App Summary screen, where you should review the information presented and click Done.
+			</p>
+		</article>
+	</body>
+</html>

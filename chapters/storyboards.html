@@ -1,0 +1,105 @@
+<article class="first last">
+	<h2>Introduction to Storyboards</h2>
+	<p>
+		Most iOS applications are usually made up of several screens of content, with the user typically navigating from one screen to another.
+		A storyboard is a new feature in Xcode that lets you view all the screens as well as the connections between them in a single place.
+		Storyboards involve two key concepts, scenes and segues. A scene is defined by a view controller and is the major visual component of a storyboard.
+		It represents one screen of content in your application.
+		If you have been programming iOS applications prior to iOS5, everything you know about Interface Builder applies to scenes.
+		To use storyboarding in your application, you must select the Use Storyboard option in the project options dialog.
+	</p>
+	<p><img src="images/figure8.gif" alt="" align="center"/>
+	</p>
+	<p>
+		Figure below shows the scenes that make up the storyboard of a simple iOS application. As you can see,
+		each scene contains familiar UIKit controls like image views, buttons, and labels.
+		Clicking one of the scenes in the storyboard selects it. The selected scene has a green outline around it.
+	</p>
+	<p><img src="images/figure9.jpg" alt="" align="center"/>
+	</p>
+	<p>
+		At the bottom of each scene is a gray rectangle, called the dock. When a scene is selected,
+		the dock contains icons corresponding to the top-level objects in the scene.
+		The two icons you see in the below figure correspond to the file’s owner and the view controller.
+		The actual user-interface elements in the view controller are not top-level objects because they are contained by the view controller,
+		and hence do not appear in the dock.
+	</p>
+	<p><img src="images/figure10.jpg" alt="" align="center"/>
+	</p>
+	<p>
+		You can expand the dock by clicking the small triangle indicator at the bottom left of the storyboard.
+		When expanded, the dock contains all the objects contained in each scene of the storyboard. Each scene is represented by a rounded rectangle.
+	</p>
+	<p><img src="images/figure11.gif" alt="" align="center"/>
+	</p>
+	<p>
+		Objects contained within the scene are shown hierarchically. Clicking an object in the hierarchy selects it in the corresponding scene.
+
+		To view the entire storyboard at a glance, simply double-click the canvas to zoom out. Double-click a scene to select and zoom in to the storyboard.
+
+		A segue represents the transition between one scene to another.
+		It also represents the manner in which the new scene is presented. Segues are represented by arrows between scenes.
+	</p>
+	<p><img src="images/figure12.jpg" alt="" align="center"/>
+	</p>
+	<p><img src="images/figure13.gif" alt="" align="center"/>
+	</p>
+	<p>
+		There are three different types of segues: Modal, Push, and Custom. Modal segues are used to present modal content; they enable you to specify a transition style,
+		the most common of which is one where the new scene slides up from the bottom of the screen. Push segues are used in conjunction with a navigation
+		controller to slide a new scene onto the screen. A Custom segue enables you to specify the presentation style.
+
+		You can set up the type and attributes of a segue by selecting it and using the Attributes inspector.
+
+		You can select a segue by clicking the circle in the middle of the arrow representing the segue on the storyboard.
+		Each segue in your application must be uniquely identified by a string. This identifier can also be set up using the Attributes inspector.
+
+		When you create a new Xcode project that uses storyboards, the storyboard contains a default scene. To add a new scene to a storyboard,
+		simply drag and drop a View Controller object from the Object library onto the canvas.
+	</p>
+	<p><img src="images/figure14.jpg" alt="" align="center"/>
+	</p>
+	<p><img src="images/figure15.jpg" alt="" align="center"/>
+	</p>
+	<p><img src="images/figure16.gif" alt="" align="center"/>
+	</p>
+	<p>
+		Although you can add interface elements to the new scene by simply dragging and dropping objects from the Object library,
+		to create outlets and actions for these elements you first need to create a UIViewController subclass that does not have an associated XIB file,
+		and link it to the new scene.
+
+		To create a new UIViewController subclass, simply right-click the project in the project navigator and select New File from the context menu.
+		Select the UIViewController Subclass template in the dialog box that appears and click Next.
+	</p>
+	<p><img src="images/figure17.jpg" alt="" align="center"/>
+	</p>
+	<p>
+		In the file options dialog box for the UIViewController subclass, provide a name for the new
+		class and ensure the With XIB for User Interface checkbox is unchecked.
+	</p>
+	<p><img src="images/figure18.jpg" alt="" align="center"/>
+	</p>
+	<p>
+		After you create your UIViewController subclass, you need to associate it with the new scene in the storyboard. To do so, simply select the scene in the storyboard, select the view controller object (the yellow box)
+		in the dock and choose the appropriate class name in the Identity inspector.
+	</p>
+	<p><img src="images/figure19.gif" alt="" align="center"/>
+	</p>
+	<p>
+		To create a segue from an object in one scene to another scene, simply right-click the object to display a context menu and drag from the circle beside one of the entries listed under the Storyboard Segues category to the target scene.
+
+		Alternately, you can Ctrl+drag from the object to the target scene and select an option from the context menu that appears when you release the mouse button.
+
+		Click the new segue to select it, and use the Attributes inspector to give it a unique string identifier. To perform some tasks in the source view controller when a segue is about to be performed, override the prepareForSegue:sender: method in the source view controller class.
+
+		You could potentially have several buttons in the source view controller, each going to different scenes of the storyboard with individual segues. If you override the prepareForSegue:sender: method in the source view controller, your version of this method will be called regardless of which segue is in action. Within this method you need to provide code to determine which segue is in action, and take appropriate steps.
+
+		The first argument of this method is a UIStoryboardSegue object that represents the segue about to be performed. The second parameter is a reference to the object that initiated the segue.
+	</p>
+	<p><img src="images/figure20.jpg" alt="" align="center"/>
+	</p>
+	<p>
+		The UIStoryboardSegue object provides the identifier property, which contains the unique string identifier specified using the Attributes inspector. The UIStoryboardSegue object also provides the sourceViewController and destinationViewController properties that you can use to retrieve a reference to the source and target view controllers involved in the transition.
+		You can use this information to set up properties in the destination view controller before it is displayed.
+	</p>
+</article>

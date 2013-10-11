@@ -1,0 +1,90 @@
+<article class="first last">
+
+	<h2>The iOS Simulator</h2>
+
+	<p>
+		The iOS Simulator is an application that runs on your Mac and allows you to test your apps without using an actual iOS device. The iOS Simulator is located in the /Developer/Platforms/iPhoneSimulator.platform/Developer/Applications folder and is a part of the standard iOS SDK installation. When you run your app in Xcode, you have the choice of launching it in the simulator or an actual device. If you choose to launch it in the simulator, Xcode will launch the iOS Simulator automatically.
+	</p>
+	<p>
+		<iframe width="640" height="360" src="//www.youtube.com/embed/1Uop77krQjU?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+	</p>
+	<h3>Features of the iOS Simulator</h3>
+	<p>
+		You can use the iOS Simulator to simulate different device (iPad, iPhone 3GS, iPhone 4) and SDK versions.
+		You can change the iOS version being simulated using the Hardware ? Version menu.
+		The actual list of options you see here will depend on the different versions of the iOS SDK that you have installed on your Mac.
+	</p>
+	<p><img src="images/figure1.jpg" alt="" align="center"/>
+	</p>
+	<p>
+		To switch devices use the Hardware ? Device menu. You can choose between an iPhone (iPhone 3GS), iPhone Retina (iPhone 4), or an iPad.
+		Figure below shows the iPhone4 and iPad simulators.
+	</p>
+	<p><img src="images/figure2.jpg" alt="" align="center"/>
+	</p>
+	<p>
+	<p>
+		You can rotate the simulator by using the Rotate Left or Rotate Right menu items from the Hardware menu.
+	</p>
+	<p><img src="images/figure3.jpg" alt="" align="center"/>
+	</p>
+	<p>
+		The iOS Simulator allows you to simulate a variety of one and two-finger multi-touch gestures.
+		Single-finger gestures such as taps and swipes can be performed by clicking and dragging with the mouse.
+		The only two-finger gesture that you can simulate is the pinch.
+		To do so, hold down the Option key on your keyboard while clicking and dragging with the mouse in the simulator window.
+		Shake gestures can be performed by using the Hardware ? Shake Gesture menu item.
+		If you are developing an app that requires location data, you can now use the iOS Simulator to simulate a test location
+		while you are running your application within the simulator. Select the Debug ? Location ? Custom Location menu item to specify a latitude and longitude pair.
+	</p>
+	<p><img src="images/figure4.jpg" alt="" align="center"/>
+	</p>
+	<p>
+		The simulator can also simulate changing locations. This is particularly useful if your app is designed to be used while on the move.
+		From the Debug ? Location menu, you can select from a list of prerecorded location sets.
+		The simulator will then periodically cycle between the locations in the selected set. The sets are:
+		<ul>
+			<li>
+				Apple Stores
+			</li>
+			<li>
+				City Bicycle Ride
+			</li>
+			<li>
+				City Run
+			</li>
+			<li>
+				Freeway Drive
+			</li>
+		</ul>
+	</p>
+	<p>
+		If you are developing an app that allows the user to print something and do not have an AirPrint-compatible printer,
+		you can simulate a printer using the iOS Printer Simulator.
+		The Printer Simulator is not loaded automatically when you switch on your Mac; to load it simply select the File ? Open Printer Simulator menu item.
+	</p>
+	<h3>Installing and Uninstalling Applications</h3>
+	<p>
+		To install an application to the iOS Simulator you need to open its corresponding .xcodeproj file in Xcode and click the Run button in the Xcode toolbar.
+		You cannot delete the default iOS Simulator applications (such as Photos, Settings, Game Center, Safari, and so on).
+		To uninstall (delete) one of your applications from the iOS Simulator, click and hold the mouse button down on the icon of the app until all the icons start to wiggle.
+		Once they start to wiggle you will notice an X button on the top-left corner of each icon.
+	</p>
+	<p><img src="images/figure5.jpg" alt="" align="center"/>
+	</p>
+	<p>
+		Release the mouse button if you are still holding it down; the icons will still continue to wiggle.
+		Click the X button on the icon of the app you want to delete. An alert window will appear asking you to confirm this action.
+	</p>
+	<p><img src="images/figure6.jpg" alt="" align="center"/>
+	</p>
+	<h3>Limitations of the iOS Simulator</h3>
+	<p>
+		As good as the iOS Simulator may be, it has its limitations. For starters you cannot make calls, send or receive text messages, or install apps from the App Store.
+		The performance of the iOS Simulator depends on the speed of your Mac, and in certain cases your application may appear to execute much
+		faster on your Mac (in the iOS Simulator) than it does on the real device.
+		Accelerometer, camera, and microphone functions are not supported in the iOS Simulator.
+		If you are developing OpenGL/ES-based applications, you should keep in mind that several OpenGL/ES functions are not supported on the iOS Simulator.
+		The iOS Simulator is a useful tool to test your apps but it is definitely not a replacement for testing on a real device.
+	</p>
+</article>

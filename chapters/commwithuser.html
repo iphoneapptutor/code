@@ -1,0 +1,148 @@
+<article class="first last">
+
+	<h2>Communicating with User Input</h2>
+
+	<p>
+		The user interface elements you have encountered so far have all been created by dragging and dropping from the Object library. In this lesson you are introduced to UIAlertView and UIActionSheet, two user interface elements that are created only with code.
+	</p>
+
+	<p>
+		An alert view is a special modal view that is used to display a short message to the user and typically enables the user to choose from a small number of options. The most common use of an alert view is to display information on success or failure of an operation; for example, on success a typical login operation may display an alert view, as shown in the figure.
+	</p>
+
+	<p><img src="images/figure26.jpg" alt="" align="center"/>
+	</p>
+
+	<p>
+		When an alert view is displayed, the screen is dimmed automatically for you. You can specify a title, a message, and one or more buttons to present the user with options. One of these buttons is always designated as the cancel button, and though you can change the text displayed in it, it is always displayed at the bottom of the alert view with a small offset from the other buttons, as shown in below figure.
+	</p>
+	<p><img src="images/figure27.jpg" alt="" align="center"/>
+	</p>
+
+	<p>
+		An alert view is an instance of the UIAlertView class, which is part of the UIKit framework, and is created in code as follows:
+	</p>
+	<p>
+		UIAlertView* message = [[UIAlertView alloc]
+		initWithTitle:@"This is the title"
+		message:@"This is the message text"
+		delegate:self
+		cancelButtonTitle:@"Cancel Button"
+		otherButtonTitles:@"Option 1", @"Option 2", nil];
+	</p>
+	<p>
+		The first parameter is the title of the alert view. This is followed by the message. You can provide an optional delegate object that is notified when the user clicks one of the buttons in the alert view. This delegate object must implement the UIAlertViewDelegate protocol, and is specified in the third parameter. The alert view is dismissed automatically when the user presses one of the buttons. If you do not specify a delegate object, you have no way to find out which button was pressed. To use the view controller class as the delegate object, specify self for the delegate parameter.
+	</p>
+	<p>
+		The fourth parameter, cancelButtonTitle, enables you to specify the text to be displayed in the cancel button. You can specify the titles of additional buttons in the last parameter, otherButtonTitles. This parameter contains a list of button titles separated by commas. The last title in the list must always be nil. If you want no additional buttons, simply set this parameter to nil. To show the alert view, simply send it the show message as follows:
+	</p>
+	<p>
+		[message show];
+	</p>
+	<p>
+		To determine which button was pressed, implement the alertView:clickedButtonAtIndex: method in the delegate object as follows:
+	</p>
+	<p>
+		- (void)alertView:(UIAlertView *)alertView
+		clickedButtonAtIndex:(NSInteger)buttonIndex
+		{
+		if (buttonIndex == alertView.cancelButtonIndex)
+		{
+		// cancel button pressed
+		}
+		else if (buttonIndex == alertView.firstOtherButtonIndex)
+		{
+		// first button pressed
+		}
+		else if (buttonIndex == alertView.firstOtherButtonIndex + 1)
+		{
+		// second button pressed
+		}
+		}
+	</p>
+	<p>
+		The first parameter to this method is a reference to the alert view object itself. The second parameter, buttonIndex, is an integer that contains the index number of the button that was pressed. The UIAlertView object defines two standard properties, the value of which should be used to interpret the buttonIndex parameter. The first is cancelButtonIndex. This stores the index position of the cancel button. Thus, to determine if the cancel button was pressed, you would use an if statement as follows:
+	</p>
+	<p>
+		if (buttonIndex == alertView.cancelButtonIndex)
+		{
+		// cancel button pressed
+		}
+	</p>
+	<p>
+		The second is firstOtherButtonIndex. This stores the index position of the first of the optional buttons specified while creating the alert view object. Recall that you can specify a list of optional button titles while creating the alert view object in the otherButtonTitles parameter. Thus, to determine if the first optional button was pressed, you would use an if statement as follows:
+	</p>
+	<p>
+		if (buttonIndex == alertView.firstOtherButtonIndex)
+		{
+		// first button pressed
+		}
+	</p>
+	<p>
+		Similarly, to determine if the second optional button was pressed, you would use the following if statement:
+	</p>
+	<p>
+		if (buttonIndex == alertView.firstOtherButtonIndex + 1)
+		{
+		// second button pressed
+		}
+	</p>
+	<p>
+		The alert view object enables you to add up to two text fields, in addition to buttons. This comes in handy when you want to collect username and password information from the user.
+	</p>
+	<p><img src="images/figure28.jpg" alt="" align="center"/>
+	</p>
+	<p>
+		To do this, you can set the value of the alertViewStyle property of the alert view object before displaying it to the user. The value of this property can be one of the following:
+	</p>
+	<p>
+		<ul>
+			<li>
+				UIAlertViewStyleDefault — This is the default style, with no text fields.
+			</li>
+			<li>
+				UIAlertViewStyleSecureTextInput — The alert view contains one text field, and any text typed by the user is masked.
+			</li>
+			<li>
+				UIAlertViewStylePlainTextInput — The alert view contains one text field, and any text typed by the user is visible.
+			</li>
+			<li>
+				UIAlertViewStyleLoginAndPasswordInput — The alert view contains two text fields, the first of which is an unmasked field and the other a masked field.
+			</li>
+		</ul>
+	</p>
+	<p>
+		If you want to create an alert view with a single masked text field, you can do it as follows:
+	</p>
+	<p>
+		UIAlertView* message = [[UIAlertView alloc]
+		initWithTitle:@"This is the title"
+		message:@"This is the message text"
+		delegate:self
+		cancelButtonTitle:@"Cancel"
+		otherButtonTitles:@"Login", nil];
+
+		message.alertViewStyle = UIAlertViewStyleSecureTextInput;
+		[message show];
+	</p>
+	<p>
+		To retrieve the value typed by the user when the alert view is dismissed, you need to retrieve a reference to the UITextField object within the alert view and read its value in the alertView:clickedButtonAtIndex: delegate method as follows:
+	</p>
+	<p>
+		- (void)alertView:(UIAlertView *)alertView
+		clickedButtonAtIndex:(NSInteger)buttonIndex
+		{
+		UITextField* field1 = [alertView textFieldAtIndex:0];
+		NSString* username = field1.text;
+
+		if (buttonIndex == alertView.cancelButtonIndex)
+		{
+		// cancel button pressed
+		}
+		else if (buttonIndex == alertView.firstOtherButtonIndex)
+		{
+		// Login button pressed
+		}
+		}
+	</p>
+</article>

@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>iPhone App Development Tutor - Lessons</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700" rel="stylesheet" />
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/config.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-ui.min.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/style-ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<style>
+			.lessonsHL {
+				color: darkorange;
+			}
+
+			.headerLink {
+				color: white;
+			}
+
+		</style>
+		<script language="JavaScript">
+			function createRequestObject() {
+				var returnObj = false;
+				if (window.XMLHttpRequest) {
+					returnObj = new XMLHttpRequest();
+				} else if (window.ActiveXObject) {
+					try {
+						returnObj = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch (e) {
+						try {
+							returnObj = new ActiveXObject("Microsoft.XMLHTTP");
+						} catch (e) {
+						}
+					}
+				}
+				return returnObj;
+			}
+
+			var http = createRequestObject();
+			var target;
+			// This is the function to call, give it the script file you want to run and
+			// the div you want it to output to.
+			function sendRequest(scriptFile, targetElement) {
+				sessionStorage.setItem('prevPage', scriptFile);
+				target = targetElement;
+				try {
+					http.open('get', scriptFile, true);
+				} catch (e) {
+					document.getElementById(target).innerHTML = e;
+					return;
+				}
+				http.onreadystatechange = handleResponse;
+				http.send();
+			}
+
+			function handleResponse() {
+				if (http.readyState == 4) {
+					try {
+						var strResponse = http.responseText;
+						document.getElementById(target).innerHTML = strResponse;
+					} catch (e) {
+						document.getElementById(target).innerHTML = e;
+					}
+				}
+			}
+
+			function loadHome() {
+				var page = sessionStorage.getItem('prevPage');
+				//alert(page);
+				if (page != null) {
+					sendRequest(page, 'contentarea');
+				}
+			}
+		</script>
+	</head>
+	<body onload="loadHome();">
+		<!-- Header -->
+		<div id="header-wrapper">
+			<header class="container" id="site-header">
+				<div class="row">
+					<div class="12u">
+						<div id="logo">
+							<h1><a href="index.html" class="headerLink">iPhone App Development Tutor</a></h1>
+						</div>
+						<nav id="nav">
+							<ul>
+								<!-- <li><a href="index.html">Home</a></li> -->
+								<li>
+									<a href="tools.html">Tools/ Resources</a>
+								</li>
+								<li class="current_page_item">
+									<a href="lessons.html">Lessons</a>
+								</li>
+								<li>
+									<a href="objectiveC.html">Objective-C</a>
+								</li>
+								<li>
+									<a href="selfeval.php">Self-Evaluation</a>
+								</li>
+								<li>
+									<a href="external.html">External Resources</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>
+		</div>
+		<!-- Main -->
+		<div id="main-wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="3u">
+						<section>
+							<h3>Index</h3>
+							<!--<ul>-->
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('chapters/simulator.html', 'contentarea')" href="javascript:" class="lessonsHL">The iOS Simulator</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('chapters/xcode.html', 'contentarea')" href="javascript:" class="lessonsHL">Overview of Xcode</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('chapters/basics.html', 'contentarea')" href="javascript:" class="lessonsHL">iOS Application Basics</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('chapters/storyboards.html', 'contentarea')" href="javascript:" class="lessonsHL">Introduction to Storyboards</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('chapters/userinput.html', 'contentarea')" href="javascript:" class="lessonsHL">Handling User Input</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('chapters/commwithuser.html', 'contentarea')" href="javascript:" class="lessonsHL">Communicating with User Input</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('chapters/addimagetoview.html', 'contentarea')" href="javascript:" class="lessonsHL">Adding Image to View</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('chapters/picker.html', 'contentarea')" href="javascript:" class="lessonsHL">Pickers</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('chapters/datepicker.html', 'contentarea')" href="javascript:" class="lessonsHL">Date Pickers</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('chapters/publish.html', 'contentarea')" href="javascript:" class="lessonsHL">Publish in the AppStore</a>
+							</li>
+							<!--</ul>-->
+						</section>
+					</div>
+					<div class="9u skel-cell-mainContent" id="contentarea">
+						<article class="first last">
+							<h2>Select any Lesson from the Index</h2>
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div id="footer-wrapper">
+			<footer class="container" id="site-footer">
+				<div class="row">
+					<div class="12u">
+						<div id="copyright">
+							Developed for St. Mary's University Comprehensive Project by <b><a href="mailto:evergreenbalu@gmail.com">Balakrishna Ganapathi.</a></b>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>iPhone App Development Tutor - Objective-C</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300italic,700" rel="stylesheet" />
+		<script src="js/jquery-1.9.1.min.js"></script>
+		<script src="js/config.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-ui.min.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/style-ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+
+		<script language="JavaScript">
+			function createRequestObject() {
+				var returnObj = false;
+				if (window.XMLHttpRequest) {
+					returnObj = new XMLHttpRequest();
+				} else if (window.ActiveXObject) {
+					try {
+						returnObj = new ActiveXObject("Msxml2.XMLHTTP");
+					} catch (e) {
+						try {
+							returnObj = new ActiveXObject("Microsoft.XMLHTTP");
+						} catch (e) {
+						}
+					}
+				}
+				return returnObj;
+			}
+
+			var http = createRequestObject();
+			var target;
+			// This is the function to call, give it the script file you want to run and
+			// the div you want it to output to.
+			function sendRequest(scriptFile, targetElement) {
+				target = targetElement;
+				try {
+					http.open('get', scriptFile, true);
+				} catch (e) {
+					document.getElementById(target).innerHTML = e;
+					return;
+				}
+				http.onreadystatechange = handleResponse;
+				http.send();
+			}
+
+			function handleResponse() {
+				if (http.readyState == 4) {
+					try {
+						var strResponse = http.responseText;
+						document.getElementById(target).innerHTML = strResponse;
+					} catch (e) {
+						document.getElementById(target).innerHTML = e;
+					}
+				}
+			}
+		</script>
+		<style>
+			.objHL {
+				color: deeppink;
+			}
+			.headerLink {
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<p></p>
+		<!-- Header -->
+		<div id="header-wrapper">
+			<header class="container" id="site-header">
+				<div class="row">
+					<div class="12u">
+						<div id="logo">
+							<h1><a href="index.html" class="headerLink">iPhone App Development Tutor</a></h1>
+						</div>
+						<nav id="nav">
+							<ul>
+								<!-- <li><a href="index.html">Home</a></li> -->
+								<li>
+									<a href="tools.html">Tools/ Resources</a>
+								</li>
+								<li>
+									<a href="lessons.html">Lessons</a>
+								</li>
+								<li class="current_page_item">
+									<a href="objectiveC.html">Objective-C</a>
+								</li>
+								<li>
+									<a href="selfeval.php">Self-Evaluation</a>
+								</li>
+								<li>
+									<a href="external.html">External Resources</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</header>
+		</div>
+		<!-- Main -->
+		<div id="main-wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="3u">
+						<section>
+							<h3>Index</h3>
+							<!--<ul>-->
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('objC/funds.html', 'contentarea')" href="javascript:" class="objHL">Fundamental Programming Concepts</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('objC/varStatExp.html', 'contentarea')" href="javascript:" class="objHL">Variables, Statements, and Expressions</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('objC/decNrep.html', 'contentarea')" href="javascript:" class="objHL">Making Decisions and Performing Repetitive Tasks</a>
+							</li>
+							<li style="margin: 0;">
+								<a onclick="javascript:sendRequest('objC/props.html', 'contentarea')" href="javascript:" class="objHL">Objective-C Properties</a>
+							</li>
+							<!--</ul>-->
+						</section>
+					</div>
+					<div class="9u skel-cell-mainContent" id="contentarea">
+						<article class="first last">
+							<h2>Introduction to Programming with Objective-C</h2>
+							<p>
+								In this page, you learn some of the key concepts of computer programming and the fundamentals of the Objective-C language. Objective-C is the language of choice when it comes to iOS programming. It is an object-oriented language and was invented in the early &rsquo;80s by Brad Cox. Essentially, Objective-C is an extension of the C language designed to give it object-oriented capabilities by bringing in concepts from another popular programming language in the &rsquo;80s&mdash;Smalltalk. Objective-C development coincided with the development of the popular C++ language, thus Objective-C and C++ share many common concepts. A brief timeline of the Objective-C language is shown in the figure.
+							</p>
+							<p>
+								<iframe width="640" height="360" src="//www.youtube.com/embed/FQRQsG_HprM?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+							</p>
+							<p><img src="images/figure48.gif" alt="" align="middle" />
+							</p>
+						</article>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Footer -->
+		<div id="footer-wrapper">
+			<footer class="container" id="site-footer">
+				<div class="row">
+					<div class="12u">
+						<div id="copyright">
+							Developed for St. Mary's University Comprehensive Project by <b><a href="mailto:evergreenbalu@gmail.com">Balakrishna Ganapathi.</a></b>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</body>
+</html>

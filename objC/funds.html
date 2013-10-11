@@ -1,0 +1,51 @@
+<article class="first last">
+
+	<h2>Fundamental Programming Concepts</h2>
+
+	<p>
+		To create anything more than the simplest of iOS applications requires you to know how to write programs. A program is a set of instructions to the device to carry out a specific task, and these instructions are specified using a programming language.
+
+		Fundamentally, computers are electronic devices, and only understand a language of 1s and 0s (known as binary language). In the early days of computer programming, programmers would have to provide their instructions in this binary language—a process that was both tedious and error prone.
+
+		As time went by, sequences of binary digits were given three-character names (like MOV and ADD) to create a higher-level language called assembly language. Programs were written using these names, and then converted to binary language before being given to the computer. These higher-level languages were easier to use by programmers.
+
+		Over the decades, several high-level, verbose languages were developed, each getting closer to instructions that began to resemble words we use in our everyday lives (like if, while, do, and return). Today almost all programming is done in one high-level language or the other (such as C, C++, Java, C#, or Objective-C). Creating an application requires a few common steps, regardless of the language in which you write your code. Sometimes one or more of these steps are combined into a single step.
+	</p>
+	<h3>Typing your Program</h3>
+	<p>
+		The first step in creating an application is typing your code in a suitable text editor. This code that you type is essentially a series of instructions to the iOS device to perform certain tasks, and is known as source code.
+	</p>
+
+	<h3>Compiling</h3>
+
+	<p>
+		Objective-C is a high-level programming language. This means that the computer cannot directly understand Objective-C. A computer requires digital/binary instructions (also known as binary language, or machine language), and before your Objective-C code can run on an iOS device, it needs to be converted into machine language.
+
+		This translation (from Objective-C to machine language) is performed by an application called a compiler, and the process is known as compilation. A compiler basically takes as input your Objective-C source code and produces another file with machine language instructions (usually with an .obj extension).
+	</p>
+	<p><img src="images/figure49.gif" alt="" align="center"/>
+	</p>
+	<h3>Linking to an Executable</h3>
+	<p>
+		In an ideal world, you would write all the code that is required by your application to carry out its intended purpose, and in the early days of computer programming, this was how things were done. Modern application development is all about reusing code. Most of the time you will use code that has been written by someone else and you have to build on it to create your own application.
+
+		In fact, much of iOS development involves using functionality provided by code that is written by Apple engineers. Entire libraries of such code (known as frameworks) are installed on your hard disk when you install the iOS SDK in ready-to-use machine language form.
+
+		The final step after your code is compiled into machine language instructions is to link this compiled code with other machine language code that it depends on. This process is called linking and the end result of this process is an executable file (that is, something that you can actually install and use on an iOS device). This executable file is also known as the application binary. Linking is performed by a special application called a linker.
+	</p>
+	<p><img src="images/figure50.gif" alt="" align="center"/>
+	</p>
+	<h3>Testing and Debugging</h3>
+	<p>
+		The testing and debugging phase of development happens after an executable has been created, and you realize that it does not do things the way you intended. An infinite number of reasons exist as to why your application does not run as expected; these faults are often called bugs. The most common reason for a bug in the application is poorly written source code.
+
+		The process of testing an application reveals these bugs, and the process of fixing them is called debugging. Debugging typically involves changing some of the source code, then compiling, linking to build a new executable, and finally testing the new executable to verify that the bug is no longer present.
+	</p>
+	<p><img src="images/figure51.gif" alt="" align="center"/>
+	</p>
+	<h3>How Xcode Fits Into This Picture</h3>
+	<p>
+		Xcode brings together a powerful text editor, compiler, linker, and debugger into a single application. In fact, each time you click the Run button on the Xcode toolbar, you are invoking a compiler, and then a linker!
+	</p>
+
+</article>
